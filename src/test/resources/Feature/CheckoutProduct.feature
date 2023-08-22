@@ -21,10 +21,10 @@ Feature: Verify user able to order product successfully
     And User validate billing address name "mayur kumble" and email "Email: mayur126@xyz.com" and phone "Phone: 945454558" and city-state-zip "Lake Vita,Alaska,415578" and country "United States"
     And User validate shiping address name "mayur kumble" and email "Email: mayur126@xyz.com" and phone "Phone: 945454558" and city-state-zip "Lake Vita,Alaska,415578" and country "United States"
     And User valiadte products contains <products>
-      | Asus N551JK-XO076H Laptop            |
       | HP Envy 6-1180ca 15.6-Inch Sleekbook |
+      | Asus N551JK-XO076H Laptop            |
       | Lenovo Thinkpad X1 Carbon Laptop     |
-    And Validate total price "$6,420.00"
+    And Validate total price "$4,320.00"
     Then User validate order massage "Your order has been successfully processed!"
     And User click on continue and navigate to home page
 

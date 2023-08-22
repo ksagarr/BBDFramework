@@ -13,6 +13,9 @@ public class CheckOutProductsSteps extends TestBase {
 
     public ContextTest contextTest;
 
+    public String totalprice;
+    public String orderMassage;
+
     public CheckOutProductsSteps(ContextTest contextTest) {
         super(contextTest);
     }
@@ -101,19 +104,22 @@ public class CheckOutProductsSteps extends TestBase {
             String expected = products.get(i);
             Assert.assertEquals(expected, actual);
         }
-        contextTest.totalprice = pg.getInstance(CheckoutProduct.class).getTotalprice().getText();
+        System.out.println(pg.getInstance(CheckoutProduct.class).getTotalprice().getText());
+        totalprice= pg.getInstance(CheckoutProduct.class).getTotalprice().getText();
     }
 
     @When("Validate total price {string}")
-    public void validate_total_price(String price) {
-        Assert.assertEquals(price, contextTest.getTotalprice());
-        contextTest.orderMassage = pg.getInstance(CheckoutProduct.class).getOrdermassage().getText();
+    public void validate_total_price(String price) throws InterruptedException {
+        Assert.assertEquals(price, totalprice);
+        pg.getInstance(CheckoutProduct.class).getConformbutton().click();
+        Thread.sleep(3000);
+        orderMassage = pg.getInstance(CheckoutProduct.class).getOrdermassage().getText();
 
     }
 
     @Then("User validate order massage {string}")
     public void user_validate_order_massage(String massage) {
-        Assert.assertEquals(massage, contextTest.getOrderMassage());
+        Assert.assertEquals(massage, orderMassage);
     }
 
     @Then("User click on continue and navigate to home page")

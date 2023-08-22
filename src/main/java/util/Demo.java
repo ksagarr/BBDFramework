@@ -8,7 +8,6 @@ public class Demo {
     public static Logger logger;
 
     public static void main(String[] args) {
-        logger= LogManager.getLogger("Demo");
-        System.out.println(logger);
+
     }
 }
